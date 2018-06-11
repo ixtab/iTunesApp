@@ -6,7 +6,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class CancionService {
 
-    static url_itunes : string = "https://itunes.apple.com/search?term=dead+can+dance&media=music&limit=20"
+    static url_itunes : string = "https://itunes.apple.com/search?term=dead+can+dance+host&media=music&limit=20"
 
     constructor (private http : HttpClient)
     {

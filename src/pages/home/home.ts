@@ -6,7 +6,7 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  styles: ['hr{border: 1px solid grey;}', 'ul{list-style:none;}'],
+  styles: ['hr{border: 1px solid grey;}', 'ul{list-style:none;}', "audio{margin: -50px ;}"],
   providers: [CancionService]
 })
 export class HomePage {

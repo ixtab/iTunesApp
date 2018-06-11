@@ -10,6 +10,7 @@
 
 <ion-content padding>
   <ul *ngFor="let cancion of lista_canciones">
+      <hr>
     <li>
         Artista: {{cancion.artistName}} <br>
         Título: {{cancion.trackName}} <br>   
@@ -18,6 +19,5 @@
         Id: {{cancion.trackId}} <br>
         Precio: {{cancion.trackPrice}} {{cancion.currency}}
     </li>
-    <hr>
 </ul>
 </ion-content>
