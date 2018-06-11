@@ -11,7 +11,8 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  public lista_canciones : Cancion[];
+  private lista_canciones : Cancion[];
+  private busqueda : string;
 
   constructor(cancion_service : CancionService , public navCtrl: NavController) {
 
@@ -22,6 +23,10 @@ export class HomePage {
 
   consumirListaCanciones(ok : any){
     this.lista_canciones = <Cancion[]> ok.results;
+  }
+
+  buscar(){
+    console.log(this.busqueda); 
   }
 
 }
