@@ -4,11 +4,20 @@
       Busca canciones en iTunes
     </ion-title>
   </ion-navbar>
+  <ion-input type="text" value="" placeholder="Busca canciones, artistas..."></ion-input>
+ <button ion-button block>Buscar</button>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ul *ngFor="let cancion of lista_canciones">
+    <li>
+        Artista: {{cancion.artistName}} <br>
+        Título: {{cancion.trackName}} <br>   
+        <img src="{{cancion.artworkUrl100}}" alt="Portada">
+        <audio src="{{cancion.previewUrl}}" controls></audio> <br>
+        Id: {{cancion.trackId}} <br>
+        Precio: {{cancion.trackPrice}} {{cancion.currency}}
+    </li>
+    <hr>
+</ul>
 </ion-content>
