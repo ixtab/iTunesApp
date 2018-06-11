@@ -4,8 +4,8 @@
       Busca canciones en iTunes
     </ion-title>
   </ion-navbar>
-  <ion-input type="text" value="" placeholder="Busca canciones, artistas..."></ion-input>
- <button ion-button block>Buscar</button>
+  <ion-input type="text" id="caja" [(ngModel)]="busqueda" placeholder="Busca canciones, artistas..."></ion-input>
+  <button ion-button block round (click)="buscar()">Buscar</button>
 </ion-header>
 
 <ion-content padding>
