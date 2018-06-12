@@ -5,19 +5,37 @@
     </ion-title>
   </ion-navbar>
   <ion-input type="text" id="caja" [(ngModel)]="busqueda" placeholder="Busca canciones, artistas..."></ion-input>
-  <button ion-button block round (click)="buscar()">Buscar</button>
+  <button ion-button block (click)="buscar()">Buscar</button>
 </ion-header>
 
-<ion-content padding>
-  <ul *ngFor="let cancion of lista_canciones">
-      <hr>
-    <li>
-        Artista: {{cancion.artistName}} <br>
-        Título: {{cancion.trackName}} <br>   
-        <img src="{{cancion.artworkUrl100}}" alt="Portada"> <br>
-        <audio src="{{cancion.previewUrl}}" controls></audio> <br>
-        Id: {{cancion.trackId}} <br>
-        Precio: {{cancion.trackPrice}} {{cancion.currency}}
-    </li>
-</ul>
+<ion-content class="card-background-page">
+
+  <div *ngIf="!canciones">
+    <br>
+    <img src="assets/imgs/pianista.gif" alt="">
+  </div>
+
+  <div *ngIf="canciones && canciones.length > 0">
+    <div *ngFor="let cancion of canciones">
+        <hr>
+        <ion-card>
+          <img src="{{cancion.artworkUrl100}}" alt="Portada" width="100px">
+          <ion-card-content>
+            <ion-card-title>
+              {{cancion.artistName}}: {{cancion.trackName}}
+            </ion-card-title>
+            <p>
+              <audio src="{{cancion.previewUrl}}" controls></audio> <br>
+              Id: {{cancion.trackId}} <br>
+              Precio: {{cancion.trackPrice}} {{cancion.currency}}
+            </p>
+          </ion-card-content>
+         </ion-card>
+    </div>
+  </div>
+
+  <div *ngIf="canciones && canciones.length <= 0">
+      <h1>No hay Resultados</h1>
+  </div>
+
 </ion-content>

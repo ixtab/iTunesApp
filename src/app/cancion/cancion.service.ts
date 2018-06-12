@@ -2,8 +2,6 @@ import { Cancion } from './cancion.model';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { urlToNavGroupStrings } from 'ionic-angular/navigation/url-serializer';
-
 @Injectable()
 export class CancionService {
 
@@ -14,7 +12,7 @@ export class CancionService {
 
     }
 
-    getListaCancionessHttp (url_recibida : string): Observable<Cancion[]> 
+    buscaCancionessHttp (url_recibida : string): Observable<Cancion[]> 
     {
         let lista_canciones : Observable<Cancion[]>;
 

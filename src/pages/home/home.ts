@@ -6,31 +6,31 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  styles: ['hr{border: 1px solid grey;}', 'ul{list-style:none;}', "audio{margin-left: -25px;}"],
   providers: [CancionService]
 })
 export class HomePage {
 
   public url_itunes : string;
-  public lista_canciones : Cancion[];
+  public canciones : Cancion[];
   public busqueda : string;
 
   constructor(private cancion_service : CancionService , public navCtrl: NavController) {
-
-   
+    this.busqueda = "";
 
   }
 
-  consumirListaCanciones(ok : any){
-    console.log(ok);
-    this.lista_canciones = <Cancion[]> ok.results;
+  obtenerCanciones(jsonrecibido : any){
+    console.log(jsonrecibido);
+    this.canciones = <Cancion[]> jsonrecibido.results;
   }
 
   buscar(){
     console.log(this.busqueda); 
+    if (this.busqueda){
     this.url_itunes = "https://itunes.apple.com/search?term="+this.busqueda+"&media=music&limit=20"
-    this.cancion_service.getListaCancionessHttp(this.url_itunes).subscribe
-    (ok => this.consumirListaCanciones(ok));
+    this.cancion_service.buscaCancionessHttp(this.url_itunes).subscribe
+    (jsonrecibido => this.obtenerCanciones(jsonrecibido));
+    }
   }
 
 }
