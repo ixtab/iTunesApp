@@ -34,14 +34,4 @@ export class HomePage {
     }
   }
 
-  checkInitialChange(item, itemIndex, items){
-    if(itemIndex == 0)
-      return item.name[0];
-
-    if(item.name[0] != items[itemIndex-1].name[0])
-      return item.name[0];
-    
-    return null;
-  }
-
 }

@@ -17,8 +17,7 @@
 
   
   <div *ngIf="canciones && canciones.length > 0">
-    <ion-list [virtualScroll]="canciones" [headerFn]="checkInitialChange" 
-    approxItemHeight="150px"> 
+    <ion-list [virtualScroll]="canciones" approxItemHeight="150px"> 
       <ion-item *virtualItem="let cancion">
           <hr>
           <ion-card>
