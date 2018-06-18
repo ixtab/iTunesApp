@@ -22,15 +22,26 @@ export class HomePage {
   obtenerCanciones(jsonrecibido : any){
     console.log(jsonrecibido);
     this.canciones = <Cancion[]> jsonrecibido.results;
+    console.log("canciones: "+ this.canciones[0].trackName);
   }
 
   buscar(){
     console.log(this.busqueda); 
     if (this.busqueda){
-    this.url_itunes = "https://itunes.apple.com/search?term="+this.busqueda+"&media=music&limit=20"
+    this.url_itunes =this.busqueda
     this.cancion_service.buscaCancionessHttp(this.url_itunes).subscribe
     (jsonrecibido => this.obtenerCanciones(jsonrecibido));
     }
+  }
+
+  checkInitialChange(item, itemIndex, items){
+    if(itemIndex == 0)
+      return item.name[0];
+
+    if(item.name[0] != items[itemIndex-1].name[0])
+      return item.name[0];
+    
+    return null;
   }
 
 }

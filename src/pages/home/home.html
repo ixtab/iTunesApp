@@ -15,24 +15,29 @@
     <img src="assets/imgs/pianista.gif" alt="">
   </div>
 
+  
   <div *ngIf="canciones && canciones.length > 0">
-    <div *ngFor="let cancion of canciones">
-        <hr>
-        <ion-card>
-          <img src="{{cancion.artworkUrl100}}" alt="Portada" width="100px">
-          <ion-card-content>
-            <ion-card-title>
-              {{cancion.artistName}}: {{cancion.trackName}}
-            </ion-card-title>
-            <p>
-              <audio src="{{cancion.previewUrl}}" controls></audio> <br>
-              Id: {{cancion.trackId}} <br>
-              Precio: {{cancion.trackPrice}} {{cancion.currency}}
-            </p>
-          </ion-card-content>
-         </ion-card>
-    </div>
+    <ion-list [virtualScroll]="canciones" [headerFn]="checkInitialChange" 
+    approxItemHeight="150px"> 
+      <ion-item *virtualItem="let cancion">
+          <hr>
+          <ion-card>
+            <img src="{{cancion.artworkUrl100}}" alt="Portada" width="100px">
+            <ion-card-content>
+              <ion-card-title>
+                {{cancion.artistName}}: {{cancion.trackName}}
+              </ion-card-title>
+              <p>
+                <audio src="{{cancion.previewUrl}}" controls></audio> <br>
+                Id: {{cancion.trackId}} <br>
+                Precio: {{cancion.trackPrice}} {{cancion.currency}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+      </ion-item>
+    </ion-list>
   </div>
+ 
 
   <div *ngIf="canciones && canciones.length <= 0">
       <h1>No hay Resultados</h1>

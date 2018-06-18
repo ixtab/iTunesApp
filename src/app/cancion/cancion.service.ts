@@ -12,11 +12,12 @@ export class CancionService {
 
     }
 
-    buscaCancionessHttp (url_recibida : string): Observable<Cancion[]> 
+    buscaCancionessHttp (busqueda : string): Observable<Cancion[]> 
     {
         let lista_canciones : Observable<Cancion[]>;
 
-        lista_canciones = this.http.get<Cancion[]>(url_recibida);
+        lista_canciones = this.http.get<Cancion[]>
+        ("https://itunes.apple.com/search?term="+ busqueda +"&media=music&limit=20" );
 
         return lista_canciones;
     }
