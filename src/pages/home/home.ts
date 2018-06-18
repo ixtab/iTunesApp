@@ -10,13 +10,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  public url_itunes : string;
   public canciones : Cancion[];
   public busqueda : string;
 
   constructor(private cancion_service : CancionService , public navCtrl: NavController) {
-    this.busqueda = "";
-
   }
 
   obtenerCanciones(jsonrecibido : any){
@@ -27,9 +24,8 @@ export class HomePage {
   buscar(){
     console.log(this.busqueda); 
     if (this.busqueda){
-    this.url_itunes = "https://itunes.apple.com/search?term="+this.busqueda+"&media=music&limit=20"
-    this.cancion_service.buscaCancionessHttp(this.url_itunes).subscribe
-    (jsonrecibido => this.obtenerCanciones(jsonrecibido));
+      this.cancion_service.buscaCancionessHttp(this.busqueda).subscribe
+      (jsonrecibido => this.obtenerCanciones(jsonrecibido));
     }
   }
 
